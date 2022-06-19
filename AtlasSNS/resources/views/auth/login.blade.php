@@ -2,7 +2,7 @@
 
 @section('content')
 
-{!! Form::open(['url' => 'posts/index']) !!}
+{!! Form::open(['url' => 'login']) !!}
 
 <p>AtlasSNSへようこそ</p>
 

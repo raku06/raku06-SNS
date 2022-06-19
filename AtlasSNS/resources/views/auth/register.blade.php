@@ -2,13 +2,12 @@
 
 @section('content')
 
-{!! Form::open() !!}
+{!! Form::open(['url' => 'register']) !!}
 
 <h2>新規ユーザー登録</h2>
 
 {{ Form::label('ユーザー名') }}
 {{ Form::text('username',null,['class' => 'input']) }}
-
 {{ Form::label('メールアドレス') }}
 {{ Form::text('mail',null,['class' => 'input']) }}
 

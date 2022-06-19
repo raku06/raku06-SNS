@@ -20,8 +20,8 @@
 
 
 //ログアウト中のページ
-Route::get('/login', 'Auth\LoginController@login');
-Route::post('/login', 'Auth\LoginController@login');
+Route::get('/login', 'Auth\LoginController@login'); // ログインページ表示
+Route::post('/login', 'Auth\LoginController@login'); // ログイン機能の処理
 
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');
