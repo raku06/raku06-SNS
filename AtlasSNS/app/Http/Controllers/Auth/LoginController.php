@@ -51,4 +51,10 @@ class LoginController extends Controller
         }
         return view("auth.login");
     }
+
+    public function logout(){
+        Auth::logout(); // ユーザーセッションの認証情報をクリア
+
+        return redirect('/login');
+    }
 }
