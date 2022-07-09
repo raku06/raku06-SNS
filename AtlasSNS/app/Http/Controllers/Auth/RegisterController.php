@@ -77,10 +77,13 @@ class RegisterController extends Controller
 
     public function register(Request $request){
         if($request->isMethod('post')){
-            $data = $request->input();
+            $data = $request->input(); // 登録用の全データのinput
 
-            $this->create($data);
-            return redirect('added');
+            $post_data = $request->input('username'); // usernameをaddedに登録するためのinput
+
+            $this->create($data); // データベースに登録
+
+            return view('auth.added',compact('post_data'));
         }
         return view('auth.register');
     }
@@ -89,7 +92,10 @@ class RegisterController extends Controller
         return view('auth.added');
     }
 
-    public function session(){
-        $req->session()->put('username', $req->input('username'));
-    }
+    // public function session(Request $post){
+    //     // $data1 = $post-> input();
+    //     $post_data = $data1::all();
+
+    //     return view('test.form_post',compact('post_data'));
+    // }
 }

@@ -3,7 +3,7 @@
 @section('content')
 
 <div id="clear">
-  <p> {{$post_data['username']}} さん</p>
+  <p> {{$post_data}} さん</p>
   <p>ようこそ！AtlasSNSへ！</p>
   <p>ユーザー登録が完了しました。</p>
   <p>早速ログインをしてみましょう。</p>
