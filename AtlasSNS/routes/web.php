@@ -36,11 +36,15 @@ Route::post('/added', 'Auth\RegisterController@added');
 //ログイン中のページ
 Route::get('/top','PostsController@index');
 
+Route::get('/top','PostsController@posts'); // 投稿画面の表示のためのルーティング
+
+Route::post('/posts','PostsController@store'); // 投稿処理
+
 Route::get('/profile','UsersController@profile');
 
-Route::get('/search','UsersController@index');
+Route::get('/search','UsersController@search');
 
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+Route::get('/follow-list','PostsController@follow');
+Route::get('/follower-list','PostsController@follower');
 
 Route::get('/logout', 'Auth\LoginController@logout');
