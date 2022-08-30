@@ -15,7 +15,7 @@
           <img src="/images/icon1.png" alt="icon">
         </div>
         <div class="col-sm-6">
-          <input type="text" name="post_content" class="form-control">
+          <input type="text" name="post_content" class="form-control" placeholder="投稿内容を入力してください。">
         </div>
       </div>
       <!-- 登録ボタン -->
@@ -58,10 +58,33 @@
               <td class="table-text">
                 <div>{{$post->updated_at}}</div>
               </td>
+              <!-- 編集ボタン -->
+               <td class="table-text content">
+                <div><a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="/images/edit.png" alt="編集"></a></div>
+              </td>
+              <td>
+                <!-- 削除ボタン -->
+                <td><a class="btn " href="/top/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="/images/trash.png" alt="削除"></a></td>
+              </td>
           </tr>
         @endforeach
+
      </tbody>
     </table>
+            <!-- モーダルの中身 -->
+            <div class="modal js-modal">
+                <div class="modal__bg js-modal-close"></div>
+                <div class="modal__content">
+                  <form action="/top/update" method="POST">
+                    @csrf
+                        <textarea name="post" class="modal_post"></textarea>
+                        <input type="hidden" name="id" class="modal_id" value="">
+                        <input type="submit" value="更新">
+
+                  </form>
+                  <a class="js-modal-close" href="">閉じる</a>
+                </div>
+            </div>
   </div>
 </div>
 @endif

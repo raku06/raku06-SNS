@@ -48,3 +48,7 @@ Route::get('/follow-list','PostsController@follow');
 Route::get('/follower-list','PostsController@follower');
 
 Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::post('/top/update', 'PostsController@update');
+
+Route::get('/top/{id}/delete', 'PostsController@delete');

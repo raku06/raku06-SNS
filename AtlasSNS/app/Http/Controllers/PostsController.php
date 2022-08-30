@@ -65,4 +65,27 @@ class PostsController extends Controller
 }
 
 
+ public function update(Request $request)
+    {
+        $id = $request->input('id');
+        $up_post = $request->input('post');
+        \DB::table('posts')
+            ->where('id', $id)
+            ->update(
+                ['post' => $up_post]
+            );
+
+        return redirect('top');
+    }
+
+
+    public function delete($id){
+        \DB::table('posts')
+            ->where('id', $id)
+            ->delete();
+
+        return redirect('/top');
+    }
+
+
 }

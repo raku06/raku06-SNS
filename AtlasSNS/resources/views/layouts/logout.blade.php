@@ -6,8 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="description" content="ページの内容を表す文章" />
   <title></title>
-  <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
-  <link rel="stylesheet" href="{{ asset('css/logout.css') }} ">
+  <link rel="stylesheet" href="{{ asset('/css/reset.css') }} ">
+  <link rel="stylesheet" href="{{ asset('/css/logout.css') }} ">
+  <link rel="stylesheet" href="{{ asset('/css/style.css') }} ">
   <!--スマホ,タブレット対応-->
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <!--サイトのアイコン指定-->
@@ -18,16 +19,27 @@
   <!--iphoneのアプリアイコン指定-->
   <link rel="apple-touch-icon-precomposed" href="画像のURL" />
   <!--OGPタグ/twitterカード-->
+
+  <!-- Bootstrap -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
 </head>
 <body>
   <header>
-    <h1><img src="images/atlas.png"></h1>
-    <p>Social Network Service</p>
+    <div class="center">
+    <h1><img src="/images/atlas.png"></h1>
+    <h2 class="white title">Social Network Service</h2>
+    </div>
   </header>
   <div id="container">
     @yield('content')
   </div>
   <script src="JavaScriptファイルのURL"></script>
   <script src="JavaScriptファイルのURL"></script>
+
+  <!-- Bootstrap -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+
+  <!-- jQuery -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 </body>
 </html>
