@@ -67,7 +67,8 @@
                 <td><a class="btn " href="/top/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="/images/trash.png" alt="削除"></a></td>
               </td>
           </tr>
-        @endforeach
+          @endforeach
+
 
      </tbody>
     </table>
@@ -87,6 +88,8 @@
             </div>
   </div>
 </div>
-@endif
+  @else
+  <p class="empty_txt">まだ投稿がありません。</p>
+  @endif
 
 @endsection
