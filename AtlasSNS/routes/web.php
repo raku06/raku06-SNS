@@ -43,7 +43,7 @@ Route::post('/posts','PostsController@store'); // 投稿処理
 Route::get('/profile','UsersController@profile');
 
 Route::get('/search','UsersController@search');
-Route::get('/search','UsersController@index'); // 検索機能
+Route::post('/search','UsersController@index'); // 検索機能
 
 Route::get('/follow-list','PostsController@follow');
 Route::get('/follower-list','PostsController@follower');
