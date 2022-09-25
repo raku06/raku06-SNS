@@ -64,7 +64,7 @@
               </td>
               <td>
                 <!-- 削除ボタン -->
-                <td><a class="btn " href="/top/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="/images/trash.png" alt="削除"></a></td>
+                <td><a class="btn" href="/top/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="/images/trash.png" alt="削除"></a></td>
               </td>
           </tr>
           @endforeach

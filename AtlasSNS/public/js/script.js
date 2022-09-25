@@ -21,4 +21,10 @@ $(function () {
     $('.js-modal').fadeOut();
     return false;
   });
+
+
+  // フォローON OFF
+  $('.follow_btn').on('click', function () {
+    $(this).toggleClass('active');
+  });
 });

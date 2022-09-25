@@ -53,3 +53,33 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::post('/top/update', 'PostsController@update');
 
 Route::get('/top/{id}/delete', 'PostsController@delete');
+
+
+// フォロー機能の実装
+
+// ログイン状態
+Route::group(['middleware' => 'auth'], function() {
+
+    // ユーザー関連
+    Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'edit', 'update']]);
+
+    // フォロー
+    Route::post('users/{user}/follow', 'UsersController@follow')->name('follow'); // name()を使うと、ルート名（括弧内につけた名前）を指定することでURLを呼び出すことができる。
+    // （コントローラーやビューの中でURLを呼び出す時に直にパスを書かなくてよくなる。
+
+    // フォロー解除
+    Route::delete('users/{user}/unfollow', 'UsersController@unfollow')->name('unfollow');
+
+});
+
+// group(['middleware' => 'auth'], function() {
+//     {}に書かれたものは全てミドルウェアが適用される
+// });
+
+// --------------------------
+// ミドルウェアとは、指定したアドレスにリクエストを送ると自動で処理を行う仕組みのこと
+
+// 処理が行わられるタイミングは以下の2つの場合
+// ① ビューからコントローラーにアクセスした時
+// ② コントローラーからビューにレスポンスを送る時
+// --------------------------

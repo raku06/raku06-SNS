@@ -13,6 +13,17 @@ header {
     font-size: 24px;
 }
 
+/* ログインフォーム */
+.logout {
+    height: 100vh;
+    background-color: #D9AFD9;
+    background-image: linear-gradient(0deg, #fddb00 0%, #186AC9 60%, #186AC9 100%);
+}
+
+.logout header {
+    background-color: transparent;
+}
+
 /* main content */
 #row {
     display: flex;
@@ -66,3 +77,22 @@ header {
     transform: translate(-50%, -50%);
     width: 60%;
 }
+
+/* フォローボタン */
+/* .follow_btn {
+    padding: 10px;
+    background-color: #52acff;
+    color: #fff;
+} */
+
+/* .follow_btn::before {
+    content: "フォローする";
+} */
+
+/* .follow_btn.active {
+    background-color: #ee3833;
+} */
+
+/* .follow_btn.active::before {
+    content: "フォロー解除";
+} */
