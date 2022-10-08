@@ -58,6 +58,7 @@
               <td class="table-text">
                 <div>{{$post->updated_at}}</div>
               </td>
+              @if ($post->user->id === Auth::user()->id)
               <!-- 編集ボタン -->
                <td class="table-text content">
                 <div><a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="/images/edit.png" alt="編集"></a></div>
@@ -66,6 +67,7 @@
                 <!-- 削除ボタン -->
                 <td><a class="btn" href="/top/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="/images/trash.png" alt="削除"></a></td>
               </td>
+              @endif
           </tr>
           @endforeach
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use App\Follow;
 use Auth;
 use Validator;
 
@@ -31,8 +32,21 @@ class PostsController extends Controller
     //ホーム画面で今までの投稿を取得して表示
     public function posts(){
 
-        // 全ての投稿を取得
-        $posts = Post::get();
+        // ↓全ての投稿を取得（ログインしてるユーザーのみにするから消し）
+        // $posts = Post::get();
+
+        // フォローしているユーザーのidを取得
+        $following_id = Auth::user()->follows()->pluck('followed_id');
+        // pluck()は、テーブル名()->pluck('カラム名') でテーブル内の欲しい情報だけ拾い出せる。
+        // 今回は、followsテーブルからログインしているユーザーがフォローされているidを拾ってくるような記述となっている。
+
+        $my_id = Auth::user()->id;
+
+        // フォローしているユーザーのidを元に投稿内容を取得
+        $posts = Post::with('user')->whereIn('posts.user_id', [$following_id, $my_id])->get();
+        // whereInメソッドは、
+        // whereIn( '判定したいテーブル名.判定したいカラム名', [判定したいカラム名の値として期待されるものを配列状に記載する])
+        // のように記載する。
 
         return view('posts.index',[
             'posts'=> $posts // 配列として取得
@@ -86,6 +100,5 @@ class PostsController extends Controller
 
         return redirect('/top');
     }
-
 
 }

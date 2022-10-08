@@ -54,6 +54,10 @@ Route::post('/top/update', 'PostsController@update');
 
 Route::get('/top/{id}/delete', 'PostsController@delete');
 
+Route::get('/follow-list', 'UsersController@follow_list');
+
+Route::post('/profile', 'UsersController@user_update');
+
 
 // フォロー機能の実装
 

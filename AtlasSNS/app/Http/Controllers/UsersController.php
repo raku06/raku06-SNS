@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
+use App\Follow;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -67,4 +69,42 @@ class UsersController extends Controller
             return back();
         }
     }
+
+
+    public function follow_list(){
+
+        // ↓全ての投稿を取得（ログインしてるユーザーのみにするから消し）
+        // $posts = Post::get();
+
+        // フォローしているユーザーのidを取得
+        $following_id = Auth::user()->follows()->pluck('followed_id');
+        // pluck()は、テーブル名()->pluck('カラム名') でテーブル内の欲しい情報だけ拾い出せる。
+        // 今回は、followsテーブルからログインしているユーザーがフォローされているidを拾ってくるような記述となっている。
+
+        return view('follows.followList',[
+            'follows'=> $following_id // 配列として取得
+        ]);
+}
+
+
+    public function user_update(Request $request)
+    {
+        $id = $request->input('id');
+        $up_username = $request->input('username');
+        $up_mail = $request->input('mail');
+        $up_password = $request->input(bcrypt('password'));
+        $up_bio = $request->input('bio');
+
+        \DB::table('users')
+            ->where('id', $id)
+            ->update(
+                ['username' => $up_username],
+                ['mail' => $up_mail],
+                ['password' => $up_password],
+                ['bio' => $up_bio]
+            );
+
+        return redirect('top');
+    }
+
 }

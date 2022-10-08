@@ -18,6 +18,7 @@
               <td class="table-text">
                 <div>{{ $user->username }}</div>
               </td>
+          @if ($user->id !== Auth::user()->id)
               <!-- フォローボタン -->
               <td class="table-text">
             @if (Auth::user()->isFollowing($user->id)) <!-- ボタン切り替えのためのif文 -->
@@ -35,6 +36,8 @@
                     <button type="submit" class="btn btn-primary">フォローする</button>
                 </form>
             @endif
+          @endif
+
               </td>
     </tr>
 @endforeach
