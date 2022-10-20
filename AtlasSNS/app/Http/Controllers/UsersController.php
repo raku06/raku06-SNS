@@ -92,17 +92,21 @@ class UsersController extends Controller
         $id = $request->input('id');
         $up_username = $request->input('username');
         $up_mail = $request->input('mail');
-        $up_password = $request->input(bcrypt('password'));
+        $up_password = $request->input('password');
         $up_bio = $request->input('bio');
+        $up_images = $request->input('images');
 
         \DB::table('users')
             ->where('id', $id)
-            ->update(
-                ['username' => $up_username],
-                ['mail' => $up_mail],
-                ['password' => $up_password],
-                ['bio' => $up_bio]
-            );
+            ->update([
+                'username' => $up_username,
+                'mail' => $up_mail,
+                'password' => bcrypt($up_password),
+                'bio' => $up_bio,
+                'images' => $up_images,
+            ]);
+
+
 
         return redirect('top');
     }

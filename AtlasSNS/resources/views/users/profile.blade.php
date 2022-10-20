@@ -2,7 +2,7 @@
 
 @section('content')
 
-{!! Form::open(['url' => 'profile']) !!}
+{!! Form::open(['url' => 'profile', 'files' => true]) !!}
 
 {{ Form::label('ユーザー名') }}
 {{ Form::text('username',Auth::user()->username,['class' => 'input']) }}
@@ -20,7 +20,8 @@
 
 {{ Form::hidden('id',Auth::user()->id,['class' => 'input']) }}
 
-
+{{ Form::label('アイコン画像') }}
+{{ Form::file('images',null,['class' => 'input']) }}
 
 {{ Form::submit('更新') }}
 
