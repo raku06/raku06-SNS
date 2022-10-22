@@ -12,7 +12,7 @@
       <!-- 投稿の本文 -->
       <div class="form-group">
         <div class="col-sm-6">
-          <img src="/images/icon1.png" alt="icon">
+          <img src="{{ asset('storage/'.Auth::user()->images)}}" alt="icon">
         </div>
         <div class="col-sm-6">
           <input type="text" name="post_content" class="form-control" placeholder="投稿内容を入力してください。">

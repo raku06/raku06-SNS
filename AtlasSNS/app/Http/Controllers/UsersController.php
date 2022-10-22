@@ -94,7 +94,10 @@ class UsersController extends Controller
         $up_mail = $request->input('mail');
         $up_password = $request->input('password');
         $up_bio = $request->input('bio');
-        $up_images = $request->input('images');
+
+        $filename = $request->images->getClientOriginalName();
+        $up_images = $request->images->storeAs('', $filename,'public');
+
 
         \DB::table('users')
             ->where('id', $id)

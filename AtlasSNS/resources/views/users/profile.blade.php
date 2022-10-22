@@ -21,7 +21,7 @@
 {{ Form::hidden('id',Auth::user()->id,['class' => 'input']) }}
 
 {{ Form::label('アイコン画像') }}
-{{ Form::file('images',null,['class' => 'input']) }}
+{{ Form::file('images',['class' => 'input']) }}
 
 {{ Form::submit('更新') }}
 
