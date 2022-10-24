@@ -16,9 +16,6 @@ class PostsController extends Controller
         return view('posts.index');
     }
 
-    public function follow(){
-        return view('follows.followList');
-    }
 
     public function follower(){
         return view('follows.followerList');

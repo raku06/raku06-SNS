@@ -45,7 +45,6 @@ Route::get('/profile','UsersController@profile');
 Route::get('/search','UsersController@search');
 Route::post('/search','UsersController@index'); // 検索機能
 
-Route::get('/follow-list','PostsController@follow');
 Route::get('/follower-list','PostsController@follower');
 
 Route::get('/logout', 'Auth\LoginController@logout');

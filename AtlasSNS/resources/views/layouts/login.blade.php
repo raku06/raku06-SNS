@@ -28,7 +28,7 @@
         <h1><a href="/top"><img src="/images/atlas.png"></a></h1>
             <div id="">
                 <div id="">
-                    <p>{{Auth::user()->username}}さん<img src="images/arrow.png"></p>
+                    <p>{{Auth::user()->username}}さん<img src="{{ asset('storage/'.Auth::user()->images)}}"></p>
                     <!-- Auth::user()からusernameを抽出して表示している。 -->
                     <!-- Authとはログインしているユーザー情報が取れる機能的な。。。 -->
                 <div>
