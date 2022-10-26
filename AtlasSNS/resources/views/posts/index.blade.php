@@ -44,7 +44,7 @@
             <tr>
               <!-- プロフィール写真 -->
               <td class="table-text">
-                <div><img src="/images/icon1.png" alt="icon"></div>
+                <div><img src="{{ asset('storage/'.$post->user->images)}}" alt="icon"></div>
               </td>
               <!-- 投稿者名の表示 -->
               <td class="table-text">

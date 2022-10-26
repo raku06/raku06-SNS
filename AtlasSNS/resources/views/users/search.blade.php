@@ -12,7 +12,7 @@
     <tr>
               <!-- プロフィール写真 -->
               <td class="table-text">
-                <div><img src="/images/icon1.png" alt="icon"></div>
+                <div><img src="{{ asset('storage/'.$user->images)}}" alt="icon"></div>
               </td>
               <!-- アカウント名 -->
               <td class="table-text">

@@ -81,9 +81,11 @@ class UsersController extends Controller
         // pluck()は、テーブル名()->pluck('カラム名') でテーブル内の欲しい情報だけ拾い出せる。
         // 今回は、followsテーブルからログインしているユーザーがフォローされているidを拾ってくるような記述となっている。
 
-        return view('follows.followList',[
-            'follows'=> $following_id // 配列として取得
+        return view('follows.followList')
+        ->with([
+            'following_id'=> $following_id // 配列として取得
         ]);
+
 }
 
 
