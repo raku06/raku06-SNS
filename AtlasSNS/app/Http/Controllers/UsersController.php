@@ -73,17 +73,34 @@ class UsersController extends Controller
 
     public function follow_list(){
 
-        // ↓全ての投稿を取得（ログインしてるユーザーのみにするから消し）
-        // $posts = Post::get();
-
         // フォローしているユーザーのidを取得
         $following_id = Auth::user()->follows()->pluck('followed_id');
         // pluck()は、テーブル名()->pluck('カラム名') でテーブル内の欲しい情報だけ拾い出せる。
         // 今回は、followsテーブルからログインしているユーザーがフォローされているidを拾ってくるような記述となっている。
 
+        // フォローしているユーザーのidを元に投稿内容を取得
+        $posts = Post::with('user')->whereIn('posts.user_id', $following_id)->get();
+
         return view('follows.followList')
         ->with([
-            'following_id'=> $following_id // 配列として取得
+            'posts'=> $posts, // 配列として取得
+        ]);
+
+}
+
+    public function follower_list(){
+
+        // フォローされているユーザーのidを取得
+        $followed_id = Auth::user()->followers()->pluck('following_id');
+        // pluck()は、テーブル名()->pluck('カラム名') でテーブル内の欲しい情報だけ拾い出せる。
+        // 今回は、followsテーブルからログインしているユーザーがフォローされているidを拾ってくるような記述となっている。
+
+        // フォローされているユーザーのidを元に投稿内容を取得
+        $posts = Post::with('user')->whereIn('posts.user_id', $followed_id)->get();
+
+        return view('follows.followerList')
+        ->with([
+            'posts'=> $posts, // 配列として取得
         ]);
 
 }

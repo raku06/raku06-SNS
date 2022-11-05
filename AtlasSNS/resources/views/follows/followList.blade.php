@@ -3,28 +3,28 @@
 @section('content')
 <div>
   <p>Folow List</p>
-  @foreach ($following_id as $follow)
-<p><img src="{{ asset('storage/'.$user->images)}}" alt=""></p>
+  @foreach ($posts as $post)
+<p><img src="{{ asset('storage/'.$post->user->images)}}" alt=""></p>
   @endforeach
 </div>
 <div>
-  @foreach($following_id as $follow)
+  @foreach($posts as $post)
 <tr>
   <!-- プロフィール写真 -->
   <td class="table-text">
-    <div><img src="{{ asset('storage/'.$user->images)}}" alt="icon"></div>
+    <div><img src="{{ asset('storage/'.$post->user->images)}}" alt="icon"></div>
   </td>
   <!-- 投稿者名の表示 -->
   <td class="table-text">
-    <div>{{ $follow->users->username }}</div>
+    <div>{{ $post->user->username }}</div>
   </td>
   <!-- 投稿詳細 -->
   <td class="table-text">
-    <div>{{ $follow->posts->post }}</div>
+    <div>{{ $post->post }}</div>
   </td>
   <!-- 更新タイムスタンプ -->
   <td class="table-text">
-    <div>{{$follow->posts->updated_at}}</div>
+    <div>{{$post->updated_at}}</div>
   </td>
 </tr>
   @endforeach

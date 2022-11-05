@@ -17,10 +17,6 @@ class PostsController extends Controller
     }
 
 
-    public function follower(){
-        return view('follows.followerList');
-    }
-
     public function search(){
         return view('users.search');
     }

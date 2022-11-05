@@ -45,8 +45,6 @@ Route::get('/profile','UsersController@profile');
 Route::get('/search','UsersController@search');
 Route::post('/search','UsersController@index'); // 検索機能
 
-Route::get('/follower-list','PostsController@follower');
-
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::post('/top/update', 'PostsController@update');
@@ -54,6 +52,7 @@ Route::post('/top/update', 'PostsController@update');
 Route::get('/top/{id}/delete', 'PostsController@delete');
 
 Route::get('/follow-list', 'UsersController@follow_list');
+Route::get('/follower-list', 'UsersController@follower_list');
 
 Route::post('/profile', 'UsersController@user_update');
 
