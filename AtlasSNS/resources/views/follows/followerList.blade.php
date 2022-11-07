@@ -4,7 +4,7 @@
 <div>
   <p>Folow List</p>
   @foreach ($posts as $post)
-<p><img src="{{ asset('storage/'.$post->user->images)}}" alt=""></p>
+<p><a href="/userprofile/{{$post->user->username}}"><img src="{{ asset('storage/'.$post->user->images)}}" alt="icon"></a></p>
   @endforeach
 </div>
 <div>
@@ -12,7 +12,7 @@
 <tr>
   <!-- プロフィール写真 -->
   <td class="table-text">
-    <div><img src="{{ asset('storage/'.$post->user->images)}}" alt="icon"></div>
+    <div><a href="/userprofile/{{$post->user->username}}"><img src="{{ asset('storage/'.$post->user->images)}}" alt="icon"></a></div>
   </td>
   <!-- 投稿者名の表示 -->
   <td class="table-text">

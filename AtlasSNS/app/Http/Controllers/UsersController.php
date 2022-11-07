@@ -133,4 +133,21 @@ class UsersController extends Controller
         return redirect('top');
     }
 
+    public function userprofile($username){
+
+        $users= User::query()->where('username',$username)->pluck('id');
+
+
+        // クリックしたユーザーのidを元に投稿内容を取得
+        $posts = Post::with('user')->whereIn('posts.user_id', $users)->get();
+        // whereInメソッドは、
+        // whereIn( '判定したいテーブル名.判定したいカラム名', [判定したいカラム名の値として期待されるものを配列状に記載する])
+        // のように記載する。
+
+        return view('follows.userprofile')
+        ->with([
+            'posts'=> $posts, // 配列として取得
+        ]);
+    }
+
 }
