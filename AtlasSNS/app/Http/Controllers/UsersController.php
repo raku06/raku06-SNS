@@ -96,7 +96,7 @@ class UsersController extends Controller
         // 今回は、followsテーブルからログインしているユーザーがフォローされているidを拾ってくるような記述となっている。
 
         // フォローされているユーザーのidを元に投稿内容を取得
-        $posts = Post::with('user')->whereIn('posts.user_id', $followed_id)->get();
+        $posts = Post::whereIn('posts.user_id', $followed_id)->get();
 
         return view('follows.followerList')
         ->with([
@@ -133,19 +133,14 @@ class UsersController extends Controller
         return redirect('top');
     }
 
-    public function userprofile($username){
+    public function userprofile($id){
 
-        $users= User::query()->where('username',$username)->pluck('id');
-
-
-        // クリックしたユーザーのidを元に投稿内容を取得
-        $posts = Post::with('user')->whereIn('posts.user_id', $users)->get();
-        // whereInメソッドは、
-        // whereIn( '判定したいテーブル名.判定したいカラム名', [判定したいカラム名の値として期待されるものを配列状に記載する])
-        // のように記載する。
+        $user = User::where('id',$id)->first();
+        $posts = Post::with('user')->where('user_id',$id)->get();
 
         return view('follows.userprofile')
         ->with([
+            'user' =>$user,
             'posts'=> $posts, // 配列として取得
         ]);
     }

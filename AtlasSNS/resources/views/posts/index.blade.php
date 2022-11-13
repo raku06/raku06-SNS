@@ -32,7 +32,6 @@
   <!-- 全ての投稿リスト -->
   @if (count($posts) > 0)
     <div class="card-body">
-      <div class="card-body">
         <table class="table table-striped task-table">
         <!-- テーブルヘッダ -->
         <thead>
@@ -88,7 +87,6 @@
                   <a class="js-modal-close" href="">閉じる</a>
                 </div>
             </div>
-  </div>
 </div>
   @else
   <p class="empty_txt">まだ投稿がありません。</p>

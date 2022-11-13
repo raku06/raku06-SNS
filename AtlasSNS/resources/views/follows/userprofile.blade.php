@@ -1,23 +1,18 @@
 @extends('layouts.login')
 
 @section('content')
-<div class="card-body">
-  <table class="table table-striped task-table">
-  <!-- テーブルヘッダ -->
-  <thead>
-    <tr>
-      <td class="table-text">
-          <p><img src="{{ asset('storage/'.$posts->user->images)}}" alt="icon"></p>
-      </td>
-      <td class="table-text">
+      <div>
+          <p><img src="{{ asset('storage/'.$user->images)}}" alt="icon"></p>
+      </div>
+      <div>
           <p>名前</p>
-          <p>"{{$posts->user->username}}"</p>
-      </td>
-      <td class="table-text">
+          <p>{{$user->username}}</p>
+      </div>
+      <div>
           <p>自己紹介文</p>
-          <p>"{{$posts->user->bio}}"</p>
-      </td>
-      <td>
+          <p>{{$user->bio}}</p>
+      </div>
+      <div>
         @if (Auth::user()->isFollowing($user->id)) <!-- ボタン切り替えのためのif文 -->
                 <form action="{{ route('unfollow', ['user' => $user->id]) }}" method="POST">
                     @csrf
@@ -33,11 +28,12 @@
                     <button type="submit" class="btn btn-primary">フォローする</button>
                 </form>
             @endif
-      </td>
-    </tr>
-  </thead>
+    </div>
   <!-- テーブル本体 -->
+<div class="card-body">
+<table class="table table-striped task-table">
   <tbody>
+
     @foreach ($posts as $post)
       <tr>
         <!-- プロフィール写真 -->
@@ -57,6 +53,10 @@
           <div>{{$post->updated_at}}</div>
         </td>
     </tr>
+
+  </tbody>
+</table>
+</div>
     @endforeach
 
 

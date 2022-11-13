@@ -56,7 +56,7 @@ Route::get('/follower-list', 'UsersController@follower_list');
 
 Route::post('/profile', 'UsersController@user_update');
 
-Route::get('/userprofile/{username}', 'UsersController@userprofile');
+Route::get('/userprofile/{id}', 'UsersController@userprofile');
 
 
 // フォロー機能の実装
