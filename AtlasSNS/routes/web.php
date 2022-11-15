@@ -18,6 +18,10 @@
 
 //Auth::routes();
 
+// Route::get('scss', function () {
+//     return view('for-scss');
+// });
+
 
 //ログアウト中のページ
 Route::get('/login', 'Auth\LoginController@login'); // ログインページ表示

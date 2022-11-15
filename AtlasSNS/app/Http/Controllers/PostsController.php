@@ -36,7 +36,7 @@ class PostsController extends Controller
         $my_id = Auth::user()->id;
 
         // フォローしているユーザーのidを元に投稿内容を取得
-        $posts = Post::with('user')->whereIn('posts.user_id', [$following_id, $my_id])->get();
+        $posts = Post::with('user')->whereIn('posts.user_id', $following_id)->orWhere('posts.user_id', $my_id)->get();
         // whereInメソッドは、
         // whereIn( '判定したいテーブル名.判定したいカラム名', [判定したいカラム名の値として期待されるものを配列状に記載する])
         // のように記載する。
