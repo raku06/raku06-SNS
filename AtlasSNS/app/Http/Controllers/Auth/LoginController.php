@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use Auth;
 
 class LoginController extends Controller
@@ -29,6 +31,15 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/home';
 
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'mail' => ['required', 'string', 'email', 'max:255',],
+            'password' => ['required', 'string', 'min:4',],
+        ]);
+    }
+
     /**
      * Create a new controller instance.
      *
@@ -43,6 +54,14 @@ class LoginController extends Controller
         if($request->isMethod('post')){
 
             $data=$request->only('mail','password');
+
+            $validator = $this ->validator($data);
+             if ($validator->fails()) {
+            return redirect('/login')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
             // ログインが成功したら、トップページへ
             //↓ログイン条件は公開時には消すこと
             if(Auth::attempt($data)){
@@ -56,5 +75,10 @@ class LoginController extends Controller
         Auth::logout(); // ユーザーセッションの認証情報をクリア
 
         return redirect('/login');
+    }
+
+    public function login_val(LoginRequest $request){
+        $data = $request->validated();
+        return view('/top');
     }
 }

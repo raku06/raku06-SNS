@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\Post;
 use App\Follow;
@@ -12,6 +13,19 @@ use Auth;
 class UsersController extends Controller
 {
     //
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'username' => ['required', 'string', 'max:255'],
+            'mail' => ['required', 'string', 'email', 'max:255',],
+            'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'bio' => ['required', 'string', 'max:255'],
+            'images' => ['image'],
+        ]);
+    }
+
+
+
     public function profile(){
         return view('users.profile');
     }
@@ -114,8 +128,19 @@ class UsersController extends Controller
         $up_password = $request->input('password');
         $up_bio = $request->input('bio');
 
-        $filename = $request->images->getClientOriginalName();
-        $up_images = $request->images->storeAs('', $filename,'public');
+        if($request->filled('images')){
+            $filename = $request->images->getClientOriginalName();
+            $up_images = $request->images->storeAs('', $filename,'public');
+        }
+
+
+        $data = $request->input();
+        $validator = $this ->validator($data);
+             if ($validator->fails()) {
+            return redirect('/profile')
+                        ->withErrors($validator)
+                        ->withInput();
+        }else{
 
 
         \DB::table('users')
@@ -131,6 +156,7 @@ class UsersController extends Controller
 
 
         return redirect('top');
+    }
     }
 
     public function userprofile($id){

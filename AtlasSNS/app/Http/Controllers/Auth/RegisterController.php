@@ -81,6 +81,12 @@ class RegisterController extends Controller
 
             $post_data = $request->input('username'); // usernameをaddedに登録するためのinput
 
+            $validator = $this ->validator($data);
+             if ($validator->fails()) {
+            return redirect('/register')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
             $this->create($data); // データベースに登録
 
             return view('auth.added',compact('post_data'));

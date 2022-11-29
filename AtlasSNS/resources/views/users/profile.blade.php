@@ -1,7 +1,15 @@
 @extends('layouts.login')
 
 @section('content')
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 {!! Form::open(['url' => 'profile', 'files' => true]) !!}
 
 {{ Form::label('ユーザー名') }}
@@ -21,7 +29,7 @@
 {{ Form::hidden('id',Auth::user()->id,['class' => 'input']) }}
 
 {{ Form::label('アイコン画像') }}
-{{ Form::file('images',['class' => 'input']) }}
+{{ Form::file('images',Auth::user()->image,['class' => 'input']) }}
 
 {{ Form::submit('更新') }}
 
