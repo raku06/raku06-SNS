@@ -18,7 +18,8 @@ class UsersController extends Controller
         return Validator::make($data, [
             'username' => ['required', 'string', 'max:255'],
             'mail' => ['required', 'string', 'email', 'max:255',],
-            'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'password' => ['required', 'string', 'min:4',],
+            'password-confirm' => ['required', 'same:password'],
             'bio' => ['required', 'string', 'max:255'],
             'images' => ['image'],
         ]);
@@ -131,6 +132,12 @@ class UsersController extends Controller
         if($request->filled('images')){
             $filename = $request->images->getClientOriginalName();
             $up_images = $request->images->storeAs('', $filename,'public');
+
+            \DB::table('users')
+            ->where('id', $id)
+            ->update([
+                'images' => $up_images,
+            ]);
         }
 
 
@@ -150,7 +157,6 @@ class UsersController extends Controller
                 'mail' => $up_mail,
                 'password' => bcrypt($up_password),
                 'bio' => $up_bio,
-                'images' => $up_images,
             ]);
 
 
