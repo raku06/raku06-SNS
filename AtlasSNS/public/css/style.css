@@ -22,7 +22,27 @@ header {
 
 .logout header {
     background-color: transparent;
+    padding-top: 180px;
 }
+
+.logout h1 img {
+    max-width: 180px;
+}
+
+.logout .title {
+    font-size: 32px;
+}
+
+.logout .login_form {
+    margin: 50px;
+    padding: 30px 20px;
+    background-color: rgba(22, 22, 22, 0.2);
+}
+
+.logout .form_title {
+    padding: 10px 0 3px;
+}
+
 
 /* main content */
 #row {

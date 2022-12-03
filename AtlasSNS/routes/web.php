@@ -32,6 +32,8 @@ Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
 
 
+// ログイン状態
+Route::group(['middleware' => 'auth'], function() {
 
 //ログイン中のページ
 Route::get('/top','PostsController@index');
@@ -61,8 +63,7 @@ Route::get('/userprofile/{id}', 'UsersController@userprofile');
 
 // フォロー機能の実装
 
-// ログイン状態
-Route::group(['middleware' => 'auth'], function() {
+
 
     // ユーザー関連
     Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'edit', 'update']]);

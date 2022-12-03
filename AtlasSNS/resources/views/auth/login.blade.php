@@ -1,12 +1,8 @@
 @extends('layouts.logout')
 
 @section('content')
-<div class="center login_form">
-{!! Form::open(['url' => 'login']) !!}
-
-<p class="white">AtlasSNSへようこそ</p>
 @if ($errors->any())
-    <div class="alert alert-danger">
+    <div class="alert alert-danger white center">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -14,14 +10,18 @@
         </ul>
     </div>
 @endif
-{{ Form::label('e-mail') }}
-{{ Form::text('mail',null,['class' => 'input']) }}
-{{ Form::label('password') }}
-{{ Form::password('password',['class' => 'input']) }}
+<div class="center login_form white">
+{!! Form::open(['url' => 'login']) !!}
 
-{{ Form::submit('ログイン') }}
+<p class="white">AtlasSNSへようこそ</p>
+<p class="form_title">{{ Form::label('mail address') }}</p>
+<p>{{ Form::text('mail',null,['class' => 'input']) }}</p>
+<p class="form_title">{{ Form::label('password') }}</p>
+<p>{{ Form::password('password',['class' => 'input']) }}</p>
 
-<p><a href="/register">新規ユーザーの方はこちら</a></p>
+<p>{{ Form::submit('LOGIN') }}</p>
+
+<p><a class="white" href="/register">新規ユーザーの方はこちら</a></p>
 
 {!! Form::close() !!}
 </div>

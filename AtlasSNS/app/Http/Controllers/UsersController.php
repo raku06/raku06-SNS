@@ -129,9 +129,10 @@ class UsersController extends Controller
         $up_password = $request->input('password');
         $up_bio = $request->input('bio');
 
-        if($request->filled('images')){
+        if(isset($request->images)){
             $filename = $request->images->getClientOriginalName();
             $up_images = $request->images->storeAs('', $filename,'public');
+
 
             \DB::table('users')
             ->where('id', $id)

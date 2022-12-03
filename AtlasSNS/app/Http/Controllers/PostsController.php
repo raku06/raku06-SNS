@@ -68,7 +68,7 @@ class PostsController extends Controller
     $posts->post = $request->post_content;
     $posts->save();
 
-    return redirect('/top');
+    return redirect('top');
 }
 
 
@@ -91,7 +91,7 @@ class PostsController extends Controller
             ->where('id', $id)
             ->delete();
 
-        return redirect('/top');
+        return redirect('top');
     }
 
 }
