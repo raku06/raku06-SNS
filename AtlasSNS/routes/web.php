@@ -31,6 +31,14 @@ Route::post('/register', 'Auth\RegisterController@register');
 Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
 
+Route::get('/', function () {
+    return redirect('login');
+})->name('login');
+
+Route::get('/home', function () {
+    return redirect('login');
+});
+
 
 // ログイン状態
 Route::group(['middleware' => 'auth'], function() {
