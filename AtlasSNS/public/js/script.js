@@ -1,4 +1,14 @@
 $(function () {
+
+  $(function () {
+    //クリックで動く
+    $('.nav_btn').click(function () {
+      $(this).toggleClass('active');
+      $(this).next('ul').slideToggle();
+    });
+  });
+
+
   // 編集ボタン(class="js-modal-open")が押されたら動く
   $('.js-modal-open').on('click', function () {
     // モーダルの中身(class="js-modal")の表示

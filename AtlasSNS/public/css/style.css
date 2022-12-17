@@ -26,7 +26,7 @@ header {
 }
 
 .logout h1 img {
-    max-width: 180px;
+    max-width: 160px;
 }
 
 .logout .title {
@@ -34,15 +34,171 @@ header {
 }
 
 .logout .login_form {
-    margin: 50px;
+    margin: 50px auto;
     padding: 30px 20px;
     background-color: rgba(22, 22, 22, 0.2);
+    max-width: 300px;
+    border-radius: 10px;
 }
 
 .logout .form_title {
-    padding: 10px 0 3px;
+    font-size: 20px;
+    padding-bottom: 10px;
 }
 
+.logout .form_box {
+    text-align: left;
+}
+
+.logout .form_txt {
+    padding: 20px 8px 10px;
+    font-size: 16px;
+}
+
+.logout .input {
+    padding: 16px 8px 16px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: transparent;
+}
+
+.logout .btn_box {
+    text-align: right;
+    margin: 20px 0 50px;
+}
+
+.logout .login_btn {
+    background-color: #ed3a50;
+    color: #fff;
+    border: 3px solid transparent;
+    font-size: 18px;
+    padding: 12px 36px 12px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.logout .login_btn:hover {
+    background-color: #fff;
+    border: 3px solid #ed3a50;
+    color: #ed3a50;
+}
+
+.logout a.white {
+    transition: 0.3s;
+}
+
+.logout a.white:hover {
+    color: #002aff;
+}
+
+/* ログイン後 */
+/* ヘッダー */
+#head {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px 15px;
+    align-items: center;
+    height: 90px;
+}
+
+#head h1 img {
+    max-width: 110px;
+}
+
+#head .user_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+}
+
+#head .username {
+    font-size: 20px;
+    margin: 0;
+    padding: 0 20px 0 50px;
+}
+
+#head .username span {
+    padding-left: 15px;
+}
+
+#head .nav_btn {
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+    padding: 20px;
+    font-size: 20px;
+}
+
+#head .nav_btn::before,
+#head .nav_btn::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    width: 4px;
+    height: 20px;
+    background-color: #fff;
+    transition: .5s;
+}
+
+#head .nav_btn::before {
+    transform: rotate(-45deg);
+    right: 24px;
+}
+
+#head .nav_btn::after {
+    transform: rotate(45deg);
+    right: 12px;
+}
+
+#head .nav_btn.active::before {
+    transform: rotate(-135deg);
+    transition: .5;
+}
+
+#head .nav_btn.active::after {
+    transform: rotate(135deg);
+    transition: .5;
+}
+
+#head ul {
+    display: none;
+    position: absolute;
+    width: 300px;
+    right: 0;
+    top: 90px;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    border: solid 2px #00297E;
+    border-top: 0;
+}
+
+#head ul li {
+    font-size: 24px;
+}
+
+#head ul li a {
+    text-decoration: none;
+    color: #7f7f7f;
+    display: block;
+    padding: 20px 0 20px;
+    transition: .3s;
+}
+
+#head ul li a:hover {
+    color: #fff;
+    background-color: #00297E;
+}
+
+
+#head .user_img img {
+    max-width: 50px;
+
+}
 
 /* main content */
 #row {

@@ -13,13 +13,16 @@
 <div class="center login_form white">
 {!! Form::open(['url' => 'login']) !!}
 
-<p class="white">AtlasSNSへようこそ</p>
-<p class="form_title">{{ Form::label('mail address') }}</p>
+<p class="white form_title">AtlasSNSへようこそ</p>
+<div class="form_box">
+<p class="form_txt">{{ Form::label('mail address') }}</p>
 <p>{{ Form::text('mail',null,['class' => 'input']) }}</p>
-<p class="form_title">{{ Form::label('password') }}</p>
+</div>
+<div class="form_box">
+<p class="form_txt">{{ Form::label('password') }}</p>
 <p>{{ Form::password('password',['class' => 'input']) }}</p>
-
-<p>{{ Form::submit('LOGIN') }}</p>
+</div>
+<p class= btn_box>{{ Form::submit('LOGIN',['class' => 'login_btn']) }}</p>
 
 <p><a class="white" href="/register">新規ユーザーの方はこちら</a></p>
 

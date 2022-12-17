@@ -23,23 +23,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-    <header>
-        <div id = "head">
+<header>
+    <div id = "head">
         <h1><a href="/top"><img src="/images/atlas.png"></a></h1>
-            <div id="">
-                <div id="">
-                    <p>{{Auth::user()->username}}さん<img src="{{ asset('storage/'.Auth::user()->images)}}"></p>
-                    <!-- Auth::user()からusernameを抽出して表示している。 -->
-                    <!-- Authとはログインしているユーザー情報が取れる機能的な。。。 -->
-                <div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
-                </ul>
-            </div>
+
+        <div class= "user_content">
+        <p class="white username">{{Auth::user()->username}}<span>さん</span> </p>
+        <!-- Auth::user()からusernameを抽出して表示している。 -->
+        <!-- Authとはログインしているユーザー情報が取れる機能的な。。。 -->
+            <div class =nav_btn></div>
+            <ul>
+                <li><a href="/top">HOME</a></li>
+                <li><a href="/profile">プロフィール編集</a></li>
+                <li><a href="/logout">ログアウト</a></li>
+            </ul>
+
+        <div class="user_img">
+            <img src="{{ asset('storage/'.Auth::user()->images)}}">
         </div>
-    </header>
+        </div>
+    </div>
+</header>
     <div id="row">
         <div id="container">
             @yield('content')
