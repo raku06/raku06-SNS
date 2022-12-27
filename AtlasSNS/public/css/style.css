@@ -4,9 +4,17 @@ html {}
 
 body {}
 
+.white {
+    color: #fff;
+}
+
+.center {
+    text-align: center;
+}
+
 /* header */
 header {
-    background: #186AC9;
+    background: #046cca;
 }
 
 .title {
@@ -15,18 +23,23 @@ header {
 
 /* ログインフォーム */
 .logout {
-    height: 100vh;
-    background-color: #D9AFD9;
-    background-image: linear-gradient(0deg, #fddb00 0%, #186AC9 60%, #186AC9 100%);
+    height: 110vh;
+    background-image: linear-gradient(0deg, #fddb00 0%, #6db5de 40%, #046cca 100%);
+    background-color: #fddb00;
+    background-repeat: no-repeat;
 }
 
 .logout header {
+    background-color: transparent;
+}
+
+.logout .login_header {
     background-color: transparent;
     padding-top: 180px;
 }
 
 .logout h1 img {
-    max-width: 160px;
+    max-width: 150px;
 }
 
 .logout .title {
@@ -34,10 +47,10 @@ header {
 }
 
 .logout .login_form {
-    margin: 50px auto;
+    margin: 40px auto;
     padding: 30px 20px;
     background-color: rgba(22, 22, 22, 0.2);
-    max-width: 300px;
+    max-width: 280px;
     border-radius: 10px;
 }
 
@@ -55,7 +68,7 @@ header {
     font-size: 16px;
 }
 
-.logout .input {
+.logout .login_form .input {
     padding: 16px 8px 16px;
     width: 100%;
     box-sizing: border-box;
@@ -84,12 +97,132 @@ header {
     color: #ed3a50;
 }
 
+.back_login {
+    font-size: 20px;
+    font-weight: lighter;
+    padding-bottom: 20px;
+}
+
 .logout a.white {
     transition: 0.3s;
 }
 
 .logout a.white:hover {
     color: #002aff;
+}
+
+.logout .alert-danger {
+    background-color: rgba(209, 0, 0, 0.5);
+    margin: 30px auto 0;
+}
+
+.logout .alert-danger li {
+    padding: 10px;
+}
+
+/* 新規登録 */
+
+.logout .register_header {
+    background-color: transparent;
+    margin-top: 100px;
+}
+
+.logout .register_form {
+    margin: 20px auto 50px;
+    padding: 20px 20px;
+    background-color: rgba(22, 22, 22, 0.2);
+    max-width: 280px;
+    border-radius: 10px;
+}
+
+.logout .register_form .input {
+    padding: 12px 8px 12px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: transparent;
+}
+
+.logout .register_form input[type="password"] {
+    padding: 12px 8px 12px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: transparent;
+}
+
+.logout .register_btn {
+    background-color: #ed3a50;
+    color: #fff;
+    border: 3px solid transparent;
+    font-size: 18px;
+    padding: 10px 24px 10px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.logout .register_btn:hover {
+    background-color: #fff;
+    border: 3px solid #ed3a50;
+    color: #ed3a50;
+}
+
+/* 登録完了 */
+.logout .added_header {
+    background-color: transparent;
+    padding-top: 180px;
+}
+
+.logout #clear {
+    margin: 40px auto;
+    padding: 40px 20px;
+    background-color: rgba(22, 22, 22, 0.2);
+    max-width: 280px;
+    border-radius: 10px;
+}
+
+.logout #clear p {
+    padding: 5px;
+}
+
+.logout #clear .username {
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.logout #clear .welcome {
+    font-size: 16px;
+    padding-bottom: 40px;
+    font-weight: bolder;
+}
+
+.logout #clear .btn {
+    background-color: #ed3a50;
+    color: #fff;
+    border: 3px solid transparent;
+    font-size: 16px;
+    border-radius: 10px;
+    transition: 0.3s;
+    margin: 30px auto 0;
+    max-width: 150px;
+    padding: 0;
+}
+
+.logout #clear .btn:hover {
+    background-color: #fff;
+    border: 3px solid #ed3a50;
+    color: #ed3a50;
+}
+
+.logout #clear .btn a {
+    display: block;
+    max-width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.logout #clear .btn a:hover {
+    color: #ed3a50;
 }
 
 /* ログイン後 */
@@ -110,7 +243,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 300px;
+    width: 330px;
 }
 
 #head .username {
@@ -165,7 +298,7 @@ header {
 #head ul {
     display: none;
     position: absolute;
-    width: 300px;
+    width: 330px;
     right: 0;
     top: 90px;
     text-align: center;
@@ -178,14 +311,14 @@ header {
 }
 
 #head ul li {
-    font-size: 24px;
+    font-size: 28px;
 }
 
 #head ul li a {
     text-decoration: none;
     color: #7f7f7f;
     display: block;
-    padding: 20px 0 20px;
+    padding: 35px 0 35px;
     transition: .3s;
 }
 
@@ -207,21 +340,84 @@ header {
 }
 
 #container {
-    flex: 0 0 80%;
+    flex: 1 1 auto;
 }
 
+/* サイドバー */
 #side-bar {
-    flex: 0 0 19%;
+    flex: 0 0 330px;
     border-left: 1px solid #727272;
+    font-size: 18px;
+    min-height: 100vh;
 }
 
-.white {
+#side-bar #confirm {
+    padding: 30px 20px 0;
+    border-bottom: 2px solid #b1b1b1;
+}
+
+#side-bar #confirm .follow_box {
+    display: flex;
+    justify-content: space-between;
+}
+
+#side-bar #confirm .follow_box .count {
+    margin-right: 100px;
+
+}
+
+#side-bar #confirm .f-btn {
+    margin-bottom: 40px;
+    text-align: right;
+}
+
+#side-bar #confirm .f-btn a {
+    text-decoration: none;
     color: #fff;
+    text-align: center;
+    background-color: #046cca;
+    padding: 10px;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    display: inline-block;
+    width: 150px;
+    font-size: 15px;
+    transition: .3s;
 }
 
-.center {
+#side-bar #confirm .f-btn a:hover {
+    color: #046cca;
+    background-color: #fff;
+    border: 3px solid #046cca;
+}
+
+#side-bar .btn {
+    margin: 20px auto;
+    display: block;
     text-align: center;
 }
+
+#side-bar .btn a {
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    background-color: #046cca;
+    padding: 10px;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    display: inline-block;
+    width: 180px;
+    margin: 0 auto;
+    font-size: 15px;
+    transition: .3s;
+}
+
+#side-bar .btn a:hover {
+    color: #046cca;
+    background-color: #fff;
+    border: 3px solid #046cca;
+}
+
 
 /* 編集のモーダル */
 .content {
@@ -253,6 +449,54 @@ header {
     transform: translate(-50%, -50%);
     width: 60%;
 }
+
+/* profile */
+#container .profile_form {
+    margin: 50px auto;
+}
+
+#container .profile_form .form_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 200px 50px 250px;
+    font-size: 20px;
+}
+
+#container .profile_form .box {
+    margin: 0 200px 50px 330px;
+}
+
+#container .profile_form .form_box img {
+    display: inline-block;
+    width: 50px;
+    margin-right: 30px;
+}
+
+#container .profile_form .form_box .input {
+    padding: 5px 10px;
+    width: 400px;
+    background-color: #f8f8f8;
+    border: #7f7f7f solid 1px;
+    margin-left: 100px;
+
+}
+
+#container .profile_form .form_box input[type="password"] {
+    padding: 5px 10px;
+    width: 400px;
+    background-color: #f8f8f8;
+    border: #7f7f7f solid 1px;
+}
+
+#container .profile_form .form_box .img_input input[type="file"] #file-upload-button {
+    background-color: #00297E;
+
+
+
+}
+
+
 
 /* フォローボタン */
 /* .follow_btn {

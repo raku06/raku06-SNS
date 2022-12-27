@@ -1,6 +1,15 @@
 @extends('layouts.logout')
 
 @section('content')
+<div class="login_header">
+<header>
+    <div class="center">
+    <h1><img src="/images/atlas.png"></h1>
+    <h2 class="white title">Social Network Service</h2>
+    </div>
+  </header>
+</div>
+
 @if ($errors->any())
     <div class="alert alert-danger white center">
         <ul>
