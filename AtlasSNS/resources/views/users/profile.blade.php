@@ -13,47 +13,26 @@
 
 {!! Form::open(['url' => 'profile', 'files' => true]) !!}
 <div class="profile_form">
-
+<div class="form_label">
+<p class="name_label"><span><img src="{{ asset('storage/'.Auth::user()->images)}}" alt=""></span> {{ Form::label('ユーザー名') }}</p>
+<p class="label">{{ Form::label('メールアドレス') }}</p>
+<p class="label">{{ Form::label('パスワード') }}</p>
+<p class="label">{{ Form::label('パスワード確認') }}</p>
+<p class="label">{{ Form::label('自己紹介文') }}</p>
+<p class="label img_label">{{ Form::label('アイコン画像') }}</p>
+</div><!-- form_label -->
 <div class="form_box">
-<p><img src="{{ asset('storage/'.Auth::user()->images)}}" alt="">
-{{ Form::label('ユーザー名') }}</p>
-<p>{{ Form::text('username',Auth::user()->username,['class' => 'input']) }}</p>
-</div>
-
-<div class="form_box box">
-<p>{{ Form::label('メールアドレス') }}</p>
-<p>{{ Form::text('mail',Auth::user()->mail,['class' => 'input']) }}</p>
-</div>
-
-<div class="form_box box">
-<p>{{ Form::label('パスワード') }}</p>
-<p>{{ Form::password('password',null,['class' => 'input']) }}</p>
-</div>
-
-<div class="form_box box">
-<p>{{ Form::label('パスワード確認') }}</p>
-<p>{{ Form::password('password-confirm',null,['class' => 'input']) }}</p>
-</div>
-
-<div class="form_box box">
-<p>{{ Form::label('自己紹介文') }}</p>
-<p>{{ Form::text('bio',Auth::user()->bio,['class' => 'input']) }}</p>
-</div>
-
-<div>
+<p class="name_form">{{ Form::text('username',Auth::user()->username,['class' => 'input']) }}</p>
+<p class="form">{{ Form::text('mail',Auth::user()->mail,['class' => 'input']) }}</p>
+<p class="form">{{ Form::password('password',null,['class' => 'input']) }}</p>
+<p class="form">{{ Form::password('password-confirm',null,['class' => 'input']) }}</p>
+<p class="form">{{ Form::text('bio',Auth::user()->bio,['class' => 'input']) }}</p>
 {{ Form::hidden('id',Auth::user()->id,['class' => 'input']) }}
-</div>
-
-<div class="form_box box">
-<p>{{ Form::label('アイコン画像') }}</p>
 <p class="img_input">{{ Form::file('images',Auth::user()->image,['class' => 'input']) }}</p>
-</div>
+</div> <!-- form_box -->
+</div> <!-- profile_form -->
 
 <p class="prof-btn">{{ Form::submit('更新') }}</p>
-
-
-
-</div>
 {!! Form::close() !!}
 
 

@@ -11,7 +11,7 @@
       {{ csrf_field() }}
       <!-- 投稿の本文 -->
       <div class="form-group">
-        <div class="col-sm-6">
+        <div class="img">
           <img src="{{ asset('storage/'.Auth::user()->images)}}" alt="icon">
         </div>
         <div class="col-sm-6">
@@ -19,8 +19,8 @@
         </div>
       </div>
       <!-- 登録ボタン -->
-      <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-6">
+      <div class="form-btn">
+        <div>
           <button type="submit" class="btn btn-primary">
             <img src="/images/post.png" alt="投稿する">
           </button>
@@ -32,47 +32,45 @@
   <!-- 全ての投稿リスト -->
   @if (count($posts) > 0)
     <div class="card-body">
-        <table class="table table-striped task-table">
-        <!-- テーブルヘッダ -->
-        <thead>
-          <th> </th>
-        </thead>
         <!-- テーブル本体 -->
-        <tbody>
           @foreach ($posts as $post)
-            <tr>
+              <div class="post-outer">
+              <div class="post-container">
               <!-- プロフィール写真 -->
-              <td class="table-text">
-                <div><img src="{{ asset('storage/'.$post->user->images)}}" alt="icon"></div>
-              </td>
+                <div class="icon"><img src="{{ asset('storage/'.$post->user->images)}}" alt="icon"></div>
+              <div class="post-content">
+              <div class="post-box">
               <!-- 投稿者名の表示 -->
-              <td class="table-text">
                 <div>{{ $post->user->username }}</div>
-              </td>
               <!-- 投稿詳細 -->
-              <td class="table-text">
-                <div>{{ $post->post }}</div>
-              </td>
+                <div class="post">{{ $post->post }}</div>
+              </div> <!-- post-box -->
               <!-- 更新タイムスタンプ -->
-              <td class="table-text">
-                <div>{{$post->updated_at}}</div>
-              </td>
+                <div class="update_at">{{$post->updated_at}}</div>
+              </div> <!-- post-content -->
+              </div> <!-- post-container -->
+
               @if ($post->user->id === Auth::user()->id)
+              <div class="post-btn">
               <!-- 編集ボタン -->
-               <td class="table-text content">
-                <div><a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="/images/edit.png" alt="編集"></a></div>
-              </td>
-              <td>
+                <div><a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}">
+                  <img src="/images/edit-h.png" alt="編集">
+                  <img src="/images/edit.png" alt="編集">
+                  </a>
+                  </div>
                 <!-- 削除ボタン -->
-                <td><a class="btn" href="/top/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="/images/trash.png" alt="削除"></a></td>
-              </td>
+                <div><a class="btn" href="/top/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
+                <img src="/images/trash-h1.png" alt="削除">
+                <img src="/images/trash.png" alt="削除">
+                </a>
+                </div>
+              </div> <!-- post-btn -->
+
               @endif
-          </tr>
+          </div> <!-- post-outer -->
           @endforeach
 
 
-     </tbody>
-    </table>
             <!-- モーダルの中身 -->
             <div class="modal js-modal">
                 <div class="modal__bg js-modal-close"></div>

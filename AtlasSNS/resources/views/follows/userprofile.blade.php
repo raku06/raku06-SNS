@@ -1,18 +1,25 @@
 @extends('layouts.login')
 
 @section('content')
+<div class="form-body">
+      <div class="user-prof">
       <div>
           <p><img src="{{ asset('storage/'.$user->images)}}" alt="icon"></p>
       </div>
-      <div>
+      <div class="prof-inner">
+      <div class="user-box">
+      <div class="user-inner">
           <p>名前</p>
           <p>{{$user->username}}</p>
       </div>
-      <div>
+      <div class="user-inner">
           <p>自己紹介文</p>
           <p>{{$user->bio}}</p>
       </div>
-      <div>
+      </div> <!-- user-box -->
+
+
+      <div class="prof-btn">
         @if (Auth::user()->isFollowing($user->id)) <!-- ボタン切り替えのためのif文 -->
                 <form action="{{ route('unfollow', ['user' => $user->id]) }}" method="POST">
                     @csrf
@@ -29,33 +36,30 @@
                 </form>
             @endif
     </div>
+
+      </div>
+
+      </div>
+</div>
   <!-- テーブル本体 -->
 <div class="card-body">
-<table class="table table-striped task-table">
-  <tbody>
-
     @foreach ($posts as $post)
-      <tr>
+        <div class="post-outer">
+        <div class="post-container">
         <!-- プロフィール写真 -->
-        <td class="table-text">
-          <div><img src="{{ asset('storage/'.$post->user->images)}}" alt="icon"></div>
-        </td>
+          <div class="icon"><img src="{{ asset('storage/'.$post->user->images)}}" alt="icon"></div>
+          <div class="post-content">
+          <div class="post-box">
         <!-- 投稿者名の表示 -->
-        <td class="table-text">
           <div>{{ $post->user->username }}</div>
-        </td>
         <!-- 投稿詳細 -->
-        <td class="table-text">
-          <div>{{ $post->post }}</div>
-        </td>
+        <div class="post">{{ $post->post }}</div>
+        </div> <!-- post-box -->
         <!-- 更新タイムスタンプ -->
-        <td class="table-text">
           <div>{{$post->updated_at}}</div>
-        </td>
-    </tr>
-
-  </tbody>
-</table>
+          </div> <!-- post-content -->
+          </div> <!-- post-container -->
+          </div> <!-- post-outer -->
 </div>
     @endforeach
 

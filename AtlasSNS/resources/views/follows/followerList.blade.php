@@ -1,39 +1,34 @@
 @extends('layouts.login')
 
 @section('content')
-<div>
-  <p>Folow List</p>
+<div class="form-body fw">
+  <p class="fw-title">Folower List</p>
+  <div class="user-list">
   @foreach ($posts as $post)
 <p><a href="/userprofile/{{$post->user->id}}"><img src="{{ asset('storage/'.$post->user->images)}}" alt="icon"></a></p>
   @endforeach
+  </div> <!-- user-list -->
 </div>
 
 <div class="card-body">
-<table class="table table-striped task-table">
-  <tbody>
-
   @foreach($posts as $post)
-<tr>
+<div class="post-outer">
+<div class="post-container">
   <!-- プロフィール写真 -->
-  <td class="table-text">
-    <div><a href="/userprofile/{{$post->user->id}}"><img src="{{ asset('storage/'.$post->user->images)}}" alt="icon"></a></div>
-  </td>
+    <div class="icon"><a href="/userprofile/{{$post->user->id}}"><img src="{{ asset('storage/'.$post->user->images)}}" alt="icon"></a></div>
+  <div class="post-content">
+  <div class="post-box">
   <!-- 投稿者名の表示 -->
-  <td class="table-text">
     <div>{{ $post->user->username }}</div>
-  </td>
   <!-- 投稿詳細 -->
-  <td class="table-text">
-    <div>{{ $post->post }}</div>
-  </td>
+    <div class="post">{{ $post->post }}</div>
+  </div> <!-- post-box -->
   <!-- 更新タイムスタンプ -->
-  <td class="table-text">
-    <div>{{$post->updated_at}}</div>
-  </td>
-</tr>
-  @endforeach
+    <div class="update_at">{{$post->updated_at}}</div>
+  </div> <!-- post-content -->
+  </div> <!-- post-container -->
 
-  </tbody>
-</table>
+  </div> <!-- post-outer -->
+  @endforeach
 </div>
 @endsection
