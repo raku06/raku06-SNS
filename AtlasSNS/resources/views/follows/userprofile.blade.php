@@ -56,13 +56,13 @@
         <div class="post">{{ $post->post }}</div>
         </div> <!-- post-box -->
         <!-- 更新タイムスタンプ -->
-          <div>{{$post->updated_at}}</div>
+          <div class="update_at">{{$post->updated_at}}</div>
           </div> <!-- post-content -->
           </div> <!-- post-container -->
           </div> <!-- post-outer -->
-</div>
-    @endforeach
 
+    @endforeach
+</div>
 
 
 @endsection
