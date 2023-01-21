@@ -43,7 +43,7 @@
 </div>
   <!-- テーブル本体 -->
 <div class="card-body">
-    @foreach ($posts as $post)
+    @foreach ($posts->sortByDesc('updated_at') as $post)
         <div class="post-outer">
         <div class="post-container">
         <!-- プロフィール写真 -->

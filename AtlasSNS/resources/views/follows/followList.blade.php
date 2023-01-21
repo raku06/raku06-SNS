@@ -4,14 +4,14 @@
 <div class="form-body fw">
   <p class="fw-title">Folow List</p>
   <div class="user-list">
-  @foreach ($posts as $post)
+  @foreach ($posts->sortByDesc('updated_at') as $post)
 <p><a href="/userprofile/{{$post->user->id}}"><img src="{{ asset('storage/'.$post->user->images)}}" alt="icon"></a></p>
   @endforeach
   </div> <!-- user-list -->
 </div>
 
 <div class="card-body">
-  @foreach($posts as $post)
+  @foreach($posts->sortByDesc('updated_at') as $post )
 <div class="post-outer">
 <div class="post-container">
   <!-- プロフィール写真 -->

@@ -7,12 +7,15 @@
     <button type="submit" class="button">
         <img src="/images/search-h2.png" alt="">
         <img src="/images/search.png" alt="">
-
     </button>
+    @if (!empty($search))
+    <span class="search-result">検索ワード：{{$search}}</span>
+@endif
 </form>
 
     <table>
 @foreach ($users as $user)
+@if ($user->id !== Auth::user()->id)
     <tr>
               <!-- プロフィール写真 -->
               <td class="user-img">
@@ -44,7 +47,7 @@
                 </div>
               </td>
           @endif
-
+@endif
     </tr>
 @endforeach
     </table>

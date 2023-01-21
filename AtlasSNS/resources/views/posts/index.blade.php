@@ -33,7 +33,7 @@
   @if (count($posts) > 0)
     <div class="card-body">
         <!-- テーブル本体 -->
-          @foreach ($posts as $post)
+          @foreach ($posts->sortByDesc('updated_at') as $post)
               <div class="post-outer">
               <div class="post-container">
               <!-- プロフィール写真 -->
@@ -79,10 +79,10 @@
                     @csrf
                         <textarea name="post" class="modal_post"></textarea>
                         <input type="hidden" name="id" class="modal_id" value="">
-                        <input type="submit" value="更新">
+                        <input type="submit" value="" class="update-btn">
 
                   </form>
-                  <a class="js-modal-close" href="">閉じる</a>
+                  <p class="close"><a class="js-modal-close" href="">close</a></p>
                 </div>
             </div>
 </div>
