@@ -37,4 +37,11 @@ $(function () {
   $('.follow_btn').on('click', function () {
     $(this).toggleClass('active');
   });
+
+  $('.input-img').on('change', function () {
+    var file = $(this).prop('files')[0];
+    $('.file_name').text(file.name);
+  });
+
+
 });

@@ -713,6 +713,44 @@ header {
     padding: 5px 10px;
 }
 
+#container .profile_form .form_box .img_input {
+    background-color: #efefef;
+    padding: 40px 0;
+    width: 400px;
+    position: relative;
+    border: #7f7f7f solid 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#container .profile_form .form_box .img_input label {
+    width: 250px;
+    padding: 5px 0;
+    display: block;
+    text-align: center;
+    color: #A0A0A0;
+    background-color: #FFFFFF;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+#container .profile_form .form_box input[type="file"] {
+    display: none;
+}
+
+#container .profile_form .form_box .img_input p {
+    position: relative;
+    top: 50px;
+    font-size: 16px;
+}
+
+
+
 #container .prof-btn input[type="submit"] {
     background-color: #ed3a50;
     display: block;
