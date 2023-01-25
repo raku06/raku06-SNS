@@ -12,7 +12,6 @@
     <span class="search-result">検索ワード：{{$search}}</span>
 @endif
 </form>
-
     <table>
 @foreach ($users as $user)
 @if ($user->id !== Auth::user()->id)

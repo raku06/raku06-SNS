@@ -96,9 +96,14 @@ class UsersController extends Controller
         // フォローしているユーザーのidを元に投稿内容を取得
         $posts = Post::with('user')->whereIn('posts.user_id', $following_id)->get();
 
+        // フォローしているユーザーのidを取得
+        $following_users = User::whereIn('id',$following_id)->get();
+
+
         return view('follows.followList')
         ->with([
-            'posts'=> $posts, // 配列として取得
+            'posts'=> $posts,
+            'following_users'=> $following_users, // 配列として取得
         ]);
 
 }
@@ -113,9 +118,14 @@ class UsersController extends Controller
         // フォローされているユーザーのidを元に投稿内容を取得
         $posts = Post::whereIn('posts.user_id', $followed_id)->get();
 
+        // フォローされているユーザーのidを取得
+        $followed_users = User::whereIn('id',$followed_id)->get();
+
+
         return view('follows.followerList')
         ->with([
-            'posts'=> $posts, // 配列として取得
+            'posts'=> $posts,
+            'followed_users'=> $followed_users // 配列として取得
         ]);
 
 }

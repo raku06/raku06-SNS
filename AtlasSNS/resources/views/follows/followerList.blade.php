@@ -4,8 +4,8 @@
 <div class="form-body fw">
   <p class="fw-title">Folower List</p>
   <div class="user-list">
-  @foreach ($posts->sortByDesc('updated_at') as $post)
-<p><a href="/userprofile/{{$post->user->id}}"><img src="{{ asset('storage/'.$post->user->images)}}" alt="icon"></a></p>
+  @foreach ($followed_users as $followed_user)
+<p><a href="/userprofile/{{$followed_user->id}}"><img src="{{ asset('storage/'.$followed_user->images)}}" alt="icon"></a></p>
   @endforeach
   </div> <!-- user-list -->
 </div>
